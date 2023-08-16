@@ -8,7 +8,7 @@
     {
       "path": "Allspice",
       "name": "server"
-    },{"path":".github/workflows", "name":"workflows"}
+    }
   ],
   "settings": {
     "editor.suggestSelection": "first",
