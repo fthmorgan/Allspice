@@ -17,16 +17,20 @@ public RecipesController(RecipesService recipesService, Auth0Provider auth0Provi
 
   [Authorize]
   [HTTPPost]
-  public async Task<ActionResult<Recipe>> CreateRecipe([FromBody] RecipesController recipesData)
+  public async Task<ActionResult<Recipe>> CreateRecipe([FromBody] RecipesController recipeData)
   {
     try
     {
-      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HTTPContext);
+      recipeDataData.CreatorId = userInfo.Id;
+      RecipesController recipe = _recipesService.CreateRecipe(recipeData);
+      return Ok(recipe)
+
     }
-    catch (System.Exception)
+    catch (Exception e)
     {
 
-      throw;
+      return BadRequest(e.Message);
     }
   }
 
