@@ -9,4 +9,24 @@ public class RecipesService
   {
     _recipesRepository = recipesRepository;
   }
+
+  internal Recipe CreateRecipe(Recipe recipeData)
+  {
+    int recipeId = _recipesRepository.CreateRecipe(recipeData);
+
+    Recipe recipe = GetRecipeById(recipeId);
+
+    return recipe;
+  }
+
+  internal Recipe GetRecipeById(int recipeId)
+  {
+    Recipe recipe = _recipesRepository.GetRecipesById(recipeId);
+
+    if (recipe == null)
+    {
+      throw new Exception("No recipe found");
+    }
+    return recipe;
+  }
 }
