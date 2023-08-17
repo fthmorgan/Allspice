@@ -1,3 +1,4 @@
+using Allspice.Controllers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,9 +34,6 @@ public class Startup
 
     services.AddScoped<AccountsRepository>();
     services.AddScoped<AccountService>();
-
-    services.AddScoped<RecipesRepository>();
-    services.AddScoped<RecipesService>();
   }
 
   private void ConfigureCors(IServiceCollection services)
@@ -104,12 +102,4 @@ public class Startup
       endpoints.MapControllers();
     });
   }
-}
-
-internal class RecipesService
-{
-}
-
-internal class RecipesRepository
-{
 }
