@@ -33,5 +33,21 @@ CREATE TABLE
         name VARCHAR(300) NOT NULL,
         quantity VARCHAR(250) NOT NULL,
         recipeId INT NOT NULL,
-        FOREIGN KEY(recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+        FOREIGN KEY(recipeId) REFERENCES recipes(id) ON DELETE CASCADE,
+        creatorId VARCHAR(255) NOT NULL,
+        FOREIGN KEY(creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
+
+    INSERT INTO
+    ingredients (
+        name,
+        quantity,
+        recipeId,
+        creatorId
+    )
+VALUES (
+        Name,
+        Quantity,
+        RecipeId,
+        CreatorId
+    )
