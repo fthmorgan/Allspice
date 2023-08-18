@@ -27,4 +27,21 @@ public class IngredientsService
     }
     return ingredient;
   }
+
+  internal List<Ingredient> GetIngredientsByRecipeId(int recipeId)
+  {
+    List<Ingredient> ingredients = _ingredientsRepository.GetIngredientsByRecipeId(recipeId);
+    return ingredients;
+  }
+
+  internal void RemoveIngredient(int ingredientId, string userId)
+  {
+    Ingredient ingredient = GetIngredientById(ingredientId);
+
+    if (ingredient.CreatorId != userId)
+    {
+      throw new Exception("NOT YOUR DATA!");
+    }
+    _ingredientsRepository.RemoveIngredient(ingredientId);
+  }
 }

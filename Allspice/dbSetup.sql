@@ -37,17 +37,3 @@ CREATE TABLE
         creatorId VARCHAR(255) NOT NULL,
         FOREIGN KEY(creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
-
-    INSERT INTO
-    ingredients (
-        name,
-        quantity,
-        recipeId,
-        creatorId
-    )
-VALUES (
-        Name,
-        Quantity,
-        RecipeId,
-        CreatorId
-    )
