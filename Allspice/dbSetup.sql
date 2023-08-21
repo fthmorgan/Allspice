@@ -37,3 +37,12 @@ CREATE TABLE
         creatorId VARCHAR(255) NOT NULL,
         FOREIGN KEY(creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
+
+CREATE TABLE
+    favorites(
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        accountId VARCHAR(255) NOT NULL,
+        recipeId INT NOT NULL,
+        FOREIGN KEY (accountId) REFERENCES accounts(id) ON DELETE CASCADE,
+        FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+    ) default charset utf8 COMMENT '';

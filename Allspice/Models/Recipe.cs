@@ -16,3 +16,14 @@ public class Recipe
 
   public Profile Creator { get; set; }
 }
+
+public class ProfileFavorites : Profile
+{
+  public int FavoriteId { get; set; }
+
+}
+
+public class RecipeFavorites : Recipe
+{
+  public int FavoriteId { get; set; }
+}
