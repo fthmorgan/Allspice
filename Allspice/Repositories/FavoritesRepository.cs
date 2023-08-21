@@ -24,6 +24,14 @@ public class FavoritesRepository
     return favoriteData;
   }
 
+  internal Favorite GetFavoriteById(int favoriteId)
+  {
+    string sql = @" 
+      SELECT * FROM favorites WHERE id = @favoriteId;";
+    Favorite favorite = _db.QueryFirstOrDefault<Favorite>(sql, new { favoriteId });
+    return favorite;
+  }
+
   internal List<RecipeFavorites> GetMyRecipeFavorites(string userId)
   {
     string sql = @" 
@@ -49,5 +57,11 @@ public class FavoritesRepository
     ).ToList();
 
     return favorites;
+  }
+
+  internal void RemoveFavorite(int favoriteId)
+  {
+    string sql = "DELETE FROM favorites WHERE id = @favoriteId LIMIT 1";
+    int rowsAffected = _db.Execute(sql, new { favoriteId });
   }
 }

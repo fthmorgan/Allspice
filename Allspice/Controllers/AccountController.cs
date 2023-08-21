@@ -8,15 +8,11 @@ public class AccountController : ControllerBase
   private readonly Auth0Provider _auth0Provider;
   private readonly FavoritesService _favoritesService;
 
-  public AccountController(FavoritesService favoritesService)
-  {
-    _favoritesService = favoritesService;
-  }
-
-  public AccountController(AccountService accountService, Auth0Provider auth0Provider)
+  public AccountController(AccountService accountService, Auth0Provider auth0Provider, FavoritesService favoritesService)
   {
     _accountService = accountService;
     _auth0Provider = auth0Provider;
+    _favoritesService = favoritesService;
   }
 
   [HttpGet]
