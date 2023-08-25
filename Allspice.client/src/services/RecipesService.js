@@ -17,8 +17,7 @@ class RecipesService {
 
   async removeRecipe(recipeId) {
     const res = await api.delete(`api/recipes/${recipeId}`)
-    logger.log('[REMOVING RECIPE]', res.data)
-    AppState.recipes = AppState.recipes.filter(r => r.id != recipeId)
+    AppState.recipes = AppState.recipes.filter(r => r.id != res.data.id)
   }
 
 }

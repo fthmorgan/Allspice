@@ -11,19 +11,20 @@
     </div>
     <div class="row d-flex justify-content-center">
       <div class="col-3 card" v-for="r in recipes" :key="r.id">
-        <div>
+        <RecipeCard :recipeProp="r" />
+        <!-- <div>
           <h1>{{ r.title }}</h1>
           <p>{{ r.instructions }}</p>
           <img class="img-fluid" :src="r.img">
           <h2>{{ r.category }}</h2>
         </div>
         <div>
-          <!-- Button trigger modal -->
+          Button trigger modal
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             See More Details
           </button>
 
-          <!-- Modal -->
+          Modal
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -48,8 +49,10 @@
           </div>
         </div>
         <div>
+          <button type="button" class="btn btn-primary" @click="addFavoriteRecipe(), setActiveRecipe()">Add To
+            Favorites</button>
           <button @click="removeRecipe()" v-if="account.id == r.creatorId">Delete</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -91,17 +94,14 @@ export default {
         }
       }),
 
-
-
-      async removeRecipe() {
+      async addFavoriteRecipe() {
         try {
-          const recipeToRemove = AppState.recipes.find(r => r.creatorId == AppState.account.id)
-          const recipeId = recipeToRemove.id
-          await recipesService.removeRecipe(recipeId)
+          // logger.log('[ADDED TO FAVORITES]')
+
         } catch (error) {
           Pop.error(error.message)
         }
-      }
+      },
     }
   }
 }
